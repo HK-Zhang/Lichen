@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Lichen.Trace.Abstractions/bin/Debug/netstandard2.1
+/.vs/Lichen
+/Lichen.Trace.Abstractions/obj
+/Lichen.Trace.Azure.Table/obj
+/Lichen.Trace.Azure.Table/bin/Debug/netstandard2.1

@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lichen.Trace.Abstractions",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lichen.Trace.Azure.Table", "Lichen.Trace.Azure.Table\Lichen.Trace.Azure.Table.csproj", "{B75E44B9-1203-4C3B-901E-E6DD84D6D8C5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D524089B-C527-4469-84CB-D77E13ECF822}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lichen.Trace.Azure.Table.Tests", "Lichen.Trace.Azure.Table.Tests\Lichen.Trace.Azure.Table.Tests.csproj", "{7BF6C147-E994-4849-9929-7D05A0E17A35}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +25,16 @@ Global
 		{B75E44B9-1203-4C3B-901E-E6DD84D6D8C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B75E44B9-1203-4C3B-901E-E6DD84D6D8C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B75E44B9-1203-4C3B-901E-E6DD84D6D8C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BF6C147-E994-4849-9929-7D05A0E17A35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BF6C147-E994-4849-9929-7D05A0E17A35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BF6C147-E994-4849-9929-7D05A0E17A35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BF6C147-E994-4849-9929-7D05A0E17A35}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7BF6C147-E994-4849-9929-7D05A0E17A35} = {D524089B-C527-4469-84CB-D77E13ECF822}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AB27002B-A1E4-4C64-9094-9D76179F391B}

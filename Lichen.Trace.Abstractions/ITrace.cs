@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Lichen.Trace.Abstractions.Entity;
 
@@ -8,8 +9,10 @@ namespace Lichen.Trace.Abstractions
     {
         Task<string> Create(TraceEntity trace);
         Task<TraceEntity> Read(string traceId);
+        Task<TraceEntity> Read(string objectId,string traceId);
         Task Update(TraceEntity trace);
         Task Delete(string traceId);
-        Task<IEquatable<TraceEntity>> List(string objectId);
+        Task Delete(string objectId, string traceId);
+        Task<IEnumerable<TraceEntity>> List(string objectId);
     }
 }

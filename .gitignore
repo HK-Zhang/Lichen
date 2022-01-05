@@ -7,3 +7,4 @@
 /Lichen.Trace.Abstractions/obj
 /Lichen.Trace.Azure.Table/obj
 /Lichen.Trace.Azure.Table/bin/Debug/netstandard2.1
+/Lichen.Trace.Azure.Table.Tests/obj

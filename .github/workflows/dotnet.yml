@@ -18,14 +18,15 @@ jobs:
       with:
         dotnet-version: 6.0.x
 #         source-url: https://nuget.pkg.github.com/HK-Zhang/index.json
-#       env:
+      env:
+        version: "1.0.$GITHUB_RUN_NUMBER"
 #         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore --configuration Release /p:Version=1.0.2 /p:PackageVersion=1.0.2
+      run: dotnet build --no-restore --configuration Release /p:Version=version /p:PackageVersion=version
     - name: Create the package
-      run: dotnet pack --configuration Release /p:Version=1.0.2 /p:PackageVersion=1.0.2
+      run: dotnet pack --configuration Release /p:Version=version /p:PackageVersion=version
 #     - name: Publish packages to GPR
 #       run: dotnet nuget push */bin/Release/*.nupkg
 #     - name: Publish packages to nuget

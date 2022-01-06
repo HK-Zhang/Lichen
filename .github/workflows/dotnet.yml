@@ -23,3 +23,5 @@ jobs:
       run: dotnet build --no-restore
     - name: Create the package
       run: dotnet pack --configuration Release
+    - name: Publish the package to GPR
+      run: dotnet nuget push bin/Release/*.nupkg

@@ -8,6 +8,7 @@
     <Description>Abstraction of trace service.</Description>
     <PackageTags>log;trace;event;audit</PackageTags>
     <RepositoryUrl>https://github.com/HK-Zhang/Lichen</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/HK-Zhang/Lichen</PackageProjectUrl>
     <PackageIcon>lichen.jpg</PackageIcon>
     <PackageVersion>1.0.1</PackageVersion>
   </PropertyGroup>

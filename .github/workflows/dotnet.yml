@@ -23,12 +23,12 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore --configuration Release /p:Version=1.0.2 /p:PackageVersion=1.0.2
     - name: Create the package
-      run: dotnet pack --configuration Release
+      run: dotnet pack --configuration Release /p:Version=1.0.2 /p:PackageVersion=1.0.2
 #     - name: Publish packages to GPR
 #       run: dotnet nuget push */bin/Release/*.nupkg
-    - name: Publish packages to nuget
-      run: dotnet nuget push */bin/Release/*.nupkg -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}
+#     - name: Publish packages to nuget
+#       run: dotnet nuget push */bin/Release/*.nupkg -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
+#       env:
+#         NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}

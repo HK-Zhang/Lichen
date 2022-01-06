@@ -27,7 +27,7 @@ namespace Lichen.Trace.Azure.Table
 
             _tableName = options.TableName;
 
-            if (string.IsNullOrEmpty(options.SASUri))
+            if (!string.IsNullOrEmpty(options.SASUri))
             {
                 _tableServiceClient = new TableServiceClient(new Uri(options.SASUri));
             }
@@ -104,39 +104,68 @@ namespace Lichen.Trace.Azure.Table
         public async Task<IEnumerable<TraceEntity>> List(string objectId)
         {
             var tableClient = await GetOrCreateTableClient();
-            AsyncPageable<TableEntity> queryResults = tableClient.QueryAsync<TableEntity>(filter: $"PartitionKey eq '{objectId}'");
 
-            var result = new List<TraceEntity>();
-
-            await foreach (TableEntity qEntity in queryResults)
+            try
             {
-                result.Add(new TraceEntity
+                AsyncPageable<TableEntity> queryResults = tableClient.QueryAsync<TableEntity>(filter: $"PartitionKey eq '{objectId}'");
+
+                var result = new List<TraceEntity>();
+
+                await foreach (TableEntity qEntity in queryResults)
                 {
-                    Log = qEntity.GetString("Log"),
-                    ObjectId = objectId,
-                    Timestamp = qEntity.GetDateTime("Timestamp"),
-                    Owner = qEntity.GetString("Owner"),
-                    Id = qEntity.GetGuid("Id")
-                });
+                    result.Add(new TraceEntity
+                    {
+                        Log = qEntity.GetString("Log"),
+                        ObjectId = objectId,
+                        Timestamp = qEntity.GetDateTimeOffset("Timestamp").GetValueOrDefault().UtcDateTime,
+                        Owner = qEntity.GetString("Owner"),
+                        Id = qEntity.GetGuid("Id")
+                    });
+                }
+
+                return result;
+            }
+            catch (RequestFailedException ex)
+            {
+
+                if (ex.Status == 404)
+                {
+                    return null;
+                }
+
+                throw;
             }
 
-            return result;
         }
 
         public async Task<TraceEntity> Read(string objectId,string traceId)
         {
             var tableClient = await GetOrCreateTableClient();
-            var response = await tableClient.GetEntityAsync<TableEntity>(objectId, traceId);
-            if(response.Value == null) return null;
 
-            return new TraceEntity
+            try
             {
-                Log = response.Value.GetString("Log"),
-                ObjectId = objectId,
-                Timestamp = response.Value.GetDateTime("Timestamp"),
-                Owner = response.Value.GetString("Owner"),
-                Id = response.Value.GetGuid("Id")
-            };
+                var response = await tableClient.GetEntityAsync<TableEntity>(objectId, traceId);
+                if (response.Value == null) return null;
+
+                return new TraceEntity
+                {
+                    Log = response.Value.GetString("Log"),
+                    ObjectId = objectId,
+                    Timestamp = response.Value.GetDateTimeOffset("Timestamp").GetValueOrDefault().UtcDateTime,
+                    Owner = response.Value.GetString("Owner"),
+                    Id = response.Value.GetGuid("Id")
+                };
+            }
+            catch (RequestFailedException ex)
+            {
+                if (ex.Status == 404)
+                {
+                    return null;
+                }
+
+                throw;
+            }
+
         }
 
         public async Task<TraceEntity> Read(string traceId)

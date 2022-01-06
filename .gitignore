@@ -8,3 +8,4 @@
 /Lichen.Trace.Azure.Table/obj
 /Lichen.Trace.Azure.Table/bin/Debug/netstandard2.1
 /Lichen.Trace.Azure.Table.Tests/obj
+/Lichen.Trace.Azure.Table.Tests/bin/Debug/net6.0

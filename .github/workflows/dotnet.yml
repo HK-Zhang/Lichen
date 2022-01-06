@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  major-version: 1
+  minor-version: 0
+  
 jobs:
   build:
 
@@ -18,17 +22,14 @@ jobs:
       with:
         dotnet-version: 6.0.x
 #         source-url: https://nuget.pkg.github.com/HK-Zhang/index.json
-      env:
-        version: 1.0.${{github.run_number}}
+#       env:
 #         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
     - name: Output Run ID
-      run: echo ${{ github.run_number }}
-    - name: Output version
-      run: echo $version
+      run: echo ${{env.major-version}}.${{env.minor-version}}.${{github.run_number}}
 #     - name: Restore dependencies
 #       run: dotnet restore
 #     - name: Build
-#       run: dotnet build --no-restore --configuration Release /p:Version=$version /p:PackageVersion=$version
+#       run: dotnet build --no-restore --configuration Release /p:Version=${{env.major-version}}.${{env.minor-version}}.${{github.run_number}} /p:PackageVersion=$version
 #     - name: Create the package
 #       run: dotnet pack --configuration Release /p:Version=$version /p:PackageVersion=$version
 #     - name: Publish packages to GPR

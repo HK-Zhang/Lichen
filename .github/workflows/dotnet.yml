@@ -7,8 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  major-version: 1
-  minor-version: 0
+  version: 1.0.${{github.run_number}}
   
 jobs:
   build:
@@ -27,12 +26,12 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore --configuration Release /p:Version=${{env.major-version}}.${{env.minor-version}}.${{github.run_number}} /p:PackageVersion=${{env.major-version}}.${{env.minor-version}}.${{github.run_number}}
+      run: dotnet build --no-restore --configuration Release /p:Version=${{env.version}} /p:PackageVersion=${{env.version}}
     - name: Create the package
-      run: dotnet pack --configuration Release /p:Version=${{env.major-version}}.${{env.minor-version}}.${{github.run_number}} /p:PackageVersion=${{env.major-version}}.${{env.minor-version}}.${{github.run_number}}
-#     - name: Publish packages to GPR
-#       run: dotnet nuget push */bin/Release/*.nupkg
-#     - name: Publish packages to nuget
-#       run: dotnet nuget push */bin/Release/*.nupkg -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
-#       env:
-#         NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}
+      run: dotnet pack --configuration Release /p:Version=${{env.version}} /p:PackageVersion=${{env.version}}
+    - name: Publish packages to GPR
+      run: dotnet nuget push */bin/Release/*.nupkg -k ${{secrets.GITHUB_TOKEN}} -s https://nuget.pkg.github.com/HK-Zhang/index.json
+    - name: Publish packages to nuget
+      run: dotnet nuget push */bin/Release/*.nupkg -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}

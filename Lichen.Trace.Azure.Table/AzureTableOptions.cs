@@ -6,6 +6,7 @@ namespace Lichen.Trace.Azure.Table
 {
     public class AzureTableOptions
     {
+        public const string AzureTableTraceOptions = "AzureTableTraceOptions";
         public string StorageUri { get; set; }
         public string SASUri { get; set; }
         public string AccountName { get; set; }

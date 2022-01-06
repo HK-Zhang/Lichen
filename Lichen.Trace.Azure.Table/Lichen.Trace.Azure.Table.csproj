@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>He Ke Zhang &lt;yxzhk@hotmail.com&gt;</Authors>
+    <Company>ZHK</Company>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Implementation of trace service with azure table storage.</Description>
+    <PackageTags>log;trace;event;audit</PackageTags>
+    <RepositoryUrl>https://github.com/HK-Zhang/Lichen</RepositoryUrl>
+    <PackageIcon>lichen.jpg</PackageIcon>
+    <PackageVersion>1.0.1</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,4 +21,10 @@
     <ProjectReference Include="..\Lichen.Trace.Abstractions\Lichen.Trace.Abstractions.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="lichen.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 </Project>

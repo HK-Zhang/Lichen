@@ -17,16 +17,18 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
-        source-url: https://nuget.pkg.github.com/HK-Zhang/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+#         source-url: https://nuget.pkg.github.com/HK-Zhang/index.json
+#       env:
+#         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
     - name: Create the package
       run: dotnet pack --configuration Release
-    - name: Publish the Lichen.Trace.Abstractions package to GPR
-      run: dotnet nuget push Lichen.Trace.Abstractions/bin/Release/*.nupkg
-    - name: Publish the Lichen.Trace.Azure.Table package to GPR
-      run: dotnet nuget push Lichen.Trace.Azure.Table/bin/Release/*.nupkg
+#     - name: Publish packages to GPR
+#       run: dotnet nuget push */bin/Release/*.nupkg
+    - name: Publish packages to nuget
+      run: dotnet nuget push */bin/Release/*.nupkg -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}

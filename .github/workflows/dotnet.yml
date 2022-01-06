@@ -24,9 +24,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore --configuration Release /p:Version=version /p:PackageVersion=version
+      run: dotnet build --no-restore --configuration Release /p:Version=$version /p:PackageVersion=$version
     - name: Create the package
-      run: dotnet pack --configuration Release /p:Version=version /p:PackageVersion=version
+      run: dotnet pack --configuration Release /p:Version=$version /p:PackageVersion=$version
 #     - name: Publish packages to GPR
 #       run: dotnet nuget push */bin/Release/*.nupkg
 #     - name: Publish packages to nuget

@@ -10,7 +10,7 @@
     <RepositoryUrl>https://github.com/HK-Zhang/Lichen</RepositoryUrl>
     <PackageProjectUrl>https://github.com/HK-Zhang/Lichen</PackageProjectUrl>
     <PackageIcon>lichen.jpg</PackageIcon>
-    <PackageVersion>1.0.1</PackageVersion>
+    <PackageVersion>1.0.2</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>

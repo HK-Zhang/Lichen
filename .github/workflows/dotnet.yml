@@ -24,14 +24,12 @@ jobs:
 #         source-url: https://nuget.pkg.github.com/HK-Zhang/index.json
 #       env:
 #         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-    - name: Output Run ID
-      run: echo ${{env.major-version}}.${{env.minor-version}}.${{github.run_number}}
-#     - name: Restore dependencies
-#       run: dotnet restore
-#     - name: Build
-#       run: dotnet build --no-restore --configuration Release /p:Version=${{env.major-version}}.${{env.minor-version}}.${{github.run_number}} /p:PackageVersion=$version
-#     - name: Create the package
-#       run: dotnet pack --configuration Release /p:Version=$version /p:PackageVersion=$version
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore --configuration Release /p:Version=${{env.major-version}}.${{env.minor-version}}.${{github.run_number}} /p:PackageVersion=${{env.major-version}}.${{env.minor-version}}.${{github.run_number}}
+    - name: Create the package
+      run: dotnet pack --configuration Release /p:Version=${{env.major-version}}.${{env.minor-version}}.${{github.run_number}} /p:PackageVersion=${{env.major-version}}.${{env.minor-version}}.${{github.run_number}}
 #     - name: Publish packages to GPR
 #       run: dotnet nuget push */bin/Release/*.nupkg
 #     - name: Publish packages to nuget

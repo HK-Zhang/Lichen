@@ -19,6 +19,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+    <None Update="build\Lichen.AspNetCore.SpaProxy.targets" Pack="true" PackagePath="build\Lichen.AspNetCore.SpaProxy.targets" />
   </ItemGroup>
   <ItemGroup>
     <None Update="lichen.jpg">

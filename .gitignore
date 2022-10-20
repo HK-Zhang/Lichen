@@ -12,3 +12,6 @@
 /Lichen.Trace.Abstractions/bin/Debug
 /Lichen.Trace.Azure.Table/bin/Debug
 /Lichen.Trace.Azure.Table.Tests/bin/Release/net6.0
+/Lichen.AspNetCore.SpaProxy/bin/Debug/net6.0
+/Lichen.AspNetCore.SpaProxy/obj
+/.vs/ProjectEvaluation

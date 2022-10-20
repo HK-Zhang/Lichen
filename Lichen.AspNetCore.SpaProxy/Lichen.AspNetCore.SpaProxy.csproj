@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Authors>He Ke Zhang &lt;yxzhk@hotmail.com&gt;</Authors>
+    <Description>Replace spa proxy package for Asp.net core with React template</Description>
+    <PackageTags>asp.net core,spa,spaproxy</PackageTags>
+    <RepositoryUrl>https://github.com/HK-Zhang/Lichen</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/HK-Zhang/Lichen</PackageProjectUrl>
+    <PackageIcon>lichen.jpg</PackageIcon>
+    <PackageVersion>1.0.2</PackageVersion>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="lichen.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>
